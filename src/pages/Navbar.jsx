@@ -28,98 +28,114 @@ const Navbar = () => {
   const toggleDarkMode = () => setDarkMode((prev) => !prev);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 items-center">
-        {/* Mobile Navigation */}
-        <div className="md:hidden">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left">
-              <nav className="grid gap-6 text-lg font-medium ">
-                <a href="#" className="flex items-center gap-2 text-lg font-semibold">
-                  <span>Your Brand</span>
-                </a>
-                <a href="#" className="text-muted-foreground hover:text-foreground">
-                  Home
-                </a>
-                <a href="#" className="text-muted-foreground hover:text-foreground">
-                  Features
-                </a>
-                <a href="#" className="text-muted-foreground hover:text-foreground">
-                  Pricing
-                </a>
-                <a href="#" className="text-muted-foreground hover:text-foreground">
-                  About
-                </a>
-              </nav>
-            </SheetContent>
-          </Sheet>
-        </div>
-
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-6">
-          <a href="#" className="flex items-center gap-2 font-semibold">
-            <span>Your Brand</span>
-          </a>
-          <nav className="flex items-center gap-6 text-sm">
-            <a href="#" className="transition-colors hover:text-foreground text-foreground/80">
+<header className="sticky top-0 z-50 w-full border-b bg-white dark:bg-black/80 backdrop-blur-md shadow-md">
+  <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-8">
+    {/* Mobile Navigation */}
+    <div className="md:hidden">
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button variant="ghost" size="icon">
+            <Menu className="h-6 w-6" />
+            <span className="sr-only">Toggle menu</span>
+          </Button>
+        </SheetTrigger>
+        <SheetContent side="left">
+          <nav className="grid gap-4 text-lg font-medium ml-3 mt-3">
+            <a href="#" className="flex items-center gap-2 text-lg font-semibold">
+              <span>Your Brand</span>
+            </a>
+            <a href="#" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white">
               Home
             </a>
-            <a href="#" className="transition-colors hover:text-foreground text-foreground/80">
+            <a href="#" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white">
               Features
             </a>
-            <a href="#" className="transition-colors hover:text-foreground text-foreground/80">
+            <a href="#" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white">
               Pricing
             </a>
-            <a href="#" className="transition-colors hover:text-foreground text-foreground/80">
+            <a href="#" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white">
               About
             </a>
           </nav>
-        </div>
+        </SheetContent>
+      </Sheet>
+    </div>
 
-        {/* Right Side */}
-        <div className="flex flex-1 items-center justify-end space-x-4">
-          <nav className="flex items-center space-x-2">
-            {/* 🌗 Dark Mode Toggle */}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleDarkMode}
-              className="transition-colors"
-            >
-              {darkMode ? (
-                <Sun className="h-5 w-5 text-yellow-500" />
-              ) : (
-                <Moon className="h-5 w-5 text-gray-800" />
-              )}
-              <span className="sr-only">Toggle Dark Mode</span>
-            </Button>
+    {/* Desktop Navigation */}
+    <div className="hidden md:flex items-center gap-8">
+      <a href="#" className="text-xl font-bold text-gray-800 dark:text-white">
+        Your Brand
+      </a>
+      <nav className="flex items-center gap-6">
+        <a
+          href="#"
+          className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
+        >
+          Home
+        </a>
+        <a
+          href="#"
+          className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
+        >
+          Features
+        </a>
+        <a
+          href="#"
+          className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
+        >
+          Pricing
+        </a>
+        <a
+          href="#"
+          className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
+        >
+          About
+        </a>
+      </nav>
+    </div>
 
-            {/* 👤 User Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <span className="sr-only">User menu</span>
-                  <div className="h-6 w-6 rounded-full bg-muted flex items-center justify-center">
-                    <span>U</span>
-                  </div>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem>Profile</DropdownMenuItem>
-                <DropdownMenuItem>Settings</DropdownMenuItem>
-                <DropdownMenuItem>Logout</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </nav>
-        </div>
-      </div>
-    </header>
+    {/* Right Side */}
+    <div className="flex items-center space-x-4">
+      {/* 🌗 Dark Mode Toggle */}
+      <Button
+        variant="ghost"
+        size="icon"
+        onClick={toggleDarkMode}
+        className="transition-colors"
+      >
+        {darkMode ? (
+          <Sun className="h-6 w-6 text-yellow-500" />
+        ) : (
+          <Moon className="h-6 w-6 text-gray-800 dark:text-gray-300" />
+        )}
+        <span className="sr-only">Toggle Dark Mode</span>
+      </Button>
+
+      {/* 👤 User Dropdown */}
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" size="icon">
+            <span className="sr-only">User menu</span>
+            <div className="h-8 w-8 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center justify-center">
+              <span className="text-sm font-medium text-gray-800 dark:text-white">U</span>
+            </div>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end" className="bg-white dark:bg-gray-800">
+          <DropdownMenuItem className="hover:bg-gray-100 dark:hover:bg-gray-700">
+            Profile
+          </DropdownMenuItem>
+          <DropdownMenuItem className="hover:bg-gray-100 dark:hover:bg-gray-700">
+            Settings
+          </DropdownMenuItem>
+          <DropdownMenuItem className="hover:bg-gray-100 dark:hover:bg-gray-700">
+            Logout
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
+  </div>
+</header>
   );
 };
 
