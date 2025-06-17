@@ -1,20 +1,18 @@
-import { useState } from 'react'
-import Hero from './pages/Hero.jsx'
-import './App.css'
-import Navbar from './pages/Navbar.jsx'
+import Hero from "./pages/Hero.jsx";
+import About from "./pages/About.jsx";
+import Navbar from "./pages/Navbar.jsx";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
     <div className="bg-white dark:bg-black text-black dark:text-white">
-
-      <Navbar/>
-      <Hero/>
+      <Navbar />
+      <Hero />
+      <div id="about">
+        <About />
+      </div>
     </div>
-    </>
-  )
+  );
 }
 
-export default App
+export default App;

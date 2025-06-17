@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
 <header className="sticky top-0 z-50 w-full border-b bg-white dark:bg-black/80 backdrop-blur-md shadow-md">
-  <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-8">
+  <div className="container mx-auto flex h-16 items-center justify-between px-2 md:px-4">
     {/* Mobile Navigation */}
     <div className="md:hidden">
       <Sheet>
