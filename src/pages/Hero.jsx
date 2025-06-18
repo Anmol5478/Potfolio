@@ -1,7 +1,9 @@
+"use client";
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import image from "../assets/anmol.png";
+import { FaCode, FaServer, FaDatabase, FaRobot } from "react-icons/fa";
+import { SiJavascript, SiTypescript, SiReact } from "react-icons/si";
 
 const Hero = () => {
   const controls = useAnimation();
@@ -38,7 +40,7 @@ const Hero = () => {
     },
   };
 
-  const imageVariants = {
+  const avatarVariants = {
     hidden: { scale: 0.9, opacity: 0 },
     visible: {
       scale: 1,
@@ -51,6 +53,15 @@ const Hero = () => {
       },
     },
   };
+
+  const techIcons = [
+    { icon: <SiJavascript className="text-yellow-400" />, name: "JavaScript" },
+    { icon: <SiTypescript className="text-blue-500" />, name: "TypeScript" },
+    { icon: <SiReact className="text-cyan-400" />, name: "React" },
+    { icon: <FaServer className="text-green-500" />, name: "Backend" },
+    { icon: <FaDatabase className="text-blue-400" />, name: "Database" },
+    { icon: <FaRobot className="text-purple-500" />, name: "AI" },
+  ];
 
   return (
     <section
@@ -90,7 +101,7 @@ const Hero = () => {
         initial="hidden"
         animate={controls}
       >
-        {/* Text content - optimized for mobile */}
+        {/* Text content */}
         <motion.div
           className="w-full lg:w-1/2 text-center lg:text-left space-y-4 sm:space-y-6"
           variants={itemVariants}
@@ -165,18 +176,51 @@ const Hero = () => {
           </motion.div>
         </motion.div>
 
-        {/* Image - responsive sizing */}
+        {/* Tech Avatar */}
         <motion.div
           className="w-full lg:w-1/2 flex justify-center mt-8 lg:mt-0"
-          variants={imageVariants}
+          variants={avatarVariants}
         >
           <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80">
-            <motion.img
-              src={image}
-              alt="Anmol"
-              className="w-full h-full rounded-full object-cover shadow-2xl border-4 border-blue-500 relative z-10"
-              whileHover={{ scale: 1.03 }}
-            />
+            <div className="w-full h-full rounded-full bg-gradient-to-br from-blue-500 to-purple-600 shadow-2xl flex items-center justify-center relative z-10 overflow-hidden">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <FaCode className="text-white text-6xl opacity-80" />
+              </div>
+              
+              {/* Floating tech icons around the avatar */}
+              {techIcons.map((item, index) => {
+                const angle = (index * 360) / techIcons.length;
+                const radius = 120;
+                const x = radius * Math.cos((angle * Math.PI) / 180);
+                const y = radius * Math.sin((angle * Math.PI) / 180);
+                
+                return (
+                  <motion.div
+                    key={item.name}
+                    className="absolute bg-white dark:bg-gray-800 p-2 rounded-full shadow-md"
+                    style={{
+                      x: x,
+                      y: y,
+                    }}
+                    animate={{
+                      y: [y, y + 10, y],
+                      rotate: [0, 360],
+                    }}
+                    transition={{
+                      duration: Math.random() * 10 + 10,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    <div className="text-xl">
+                      {item.icon}
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+            
+            {/* Glow effect */}
             <div className="absolute inset-0 rounded-full bg-blue-500/20 blur-xl -z-0 animate-pulse" />
             <motion.div
               className="absolute inset-0 rounded-full border-4 border-blue-500/30 -z-0"
