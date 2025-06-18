@@ -5,6 +5,7 @@ import "./App.css";
 import Contact from "./pages/Contact.jsx";
 import Projects from "./pages/Projects.jsx";
 import { Toaster } from "sonner";
+import Footer from "./pages/Footer.jsx";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <About />
         <Projects />
         <Contact />
+        <Footer />
         
       </div>
     </div>
