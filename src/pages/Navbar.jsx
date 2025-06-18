@@ -12,7 +12,8 @@ import {
 
 const Navbar = () => {
   const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem("theme") === "dark";
+    const storedTheme = localStorage.getItem("theme");
+    return storedTheme === "dark" || storedTheme === null; // default to dark if null
   });
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
